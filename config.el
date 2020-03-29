@@ -56,7 +56,7 @@
 (pyenv-mode)
 
 ;;dart setup
-(setq lsp-dart-analysis-sdk-dir (getenv "DART_SDK"))
+(setq lsp-dart-sdk-dir (getenv "DART_SDK"))
 (setq dart-format-on-save t)
 (add-hook 'dart-mode-hook 'lsp)
 (with-eval-after-load "projectile"
