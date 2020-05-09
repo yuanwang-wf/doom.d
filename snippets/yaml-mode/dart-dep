@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: dart-dep
+# key: dart
+# --
+
+dependency_overrides:
+  bigsky-rest-files:
+    path: /Users/yuanwang/workiva/bigsky_rest_files
