@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: dart-dep-override-git
+# key: dart
+# --
+dependency_overrides:
+  content_management_sdk:
+    git:
+        url: git@github.com:Workiva/content_management_sdk.git
+        ref: folder-api
