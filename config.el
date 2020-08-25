@@ -77,6 +77,9 @@
       org-ellipsis " ▼ "
       org-superstar-headline-bullets-list '("☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷" "☷" "☷" "☷"))
 
+(after! browse-at-remote
+  (setq browse-at-remote-add-line-number-if-no-region-selected t))
+
 (after! org
   (setq org-agenda-dim-blocked-tasks nil)
   (setq org-agenda-inhibit-startup t)
