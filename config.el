@@ -54,7 +54,7 @@
 ;; they are implemented.
 
 ;;python setup
-(pyenv-mode)
+;;(pyenv-mode)
 
 ;;dart setup
 (setq lsp-dart-sdk-dir (getenv "DART_SDK"))
@@ -66,8 +66,8 @@
 (setq lsp-auto-guess-root t)
 
 ;;java setup
-(require 'lsp-java)
-(add-hook 'java-mode-hook #'lsp)
+;;(require 'lsp-java)
+;;(add-hook 'java-mode-hook #'lsp)
 
 ;;; :lang org
 (setq org-directory "~/org/"
