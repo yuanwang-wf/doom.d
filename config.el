@@ -86,6 +86,11 @@
   (setq org-agenda-use-tag-inheritance nil))
 (require 'ox-confluence)
 
+(after! plantuml-mode
+  (setq plantuml-jar-path (getenv "PLANTUML_JAR_PATH"))
+  (setq org-plantuml-jar-path (getenv "PLANTUML_JAR_PATH"))
+)
+
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
