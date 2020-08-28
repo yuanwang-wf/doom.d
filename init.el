@@ -148,7 +148,7 @@
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
-       purescript        ; javascript, but functional
+       ;;purescript        ; javascript, but functional
        (python
         +pyenv
         +lsp)            ; beautiful is better than ugly
