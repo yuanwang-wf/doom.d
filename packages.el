@@ -22,10 +22,10 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 ;(package! pyenv-mode)
-(package! lsp-dart
-  :recipe (:host github :repo "emacs-lsp/lsp-dart"))
-(package! dart-mode)
-(package! yaml-mode)
+;(package! lsp-dart
+;  :recipe (:host github :repo "emacs-lsp/lsp-dart"))
+;(package! dart-mode)
+;(package! yaml-mode)
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
