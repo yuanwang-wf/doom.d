@@ -36,17 +36,6 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
-(setq frame-title-format
-    '(""
-      (:eval
-       (if (s-contains-p org-roam-directory (or buffer-file-name ""))
-           (replace-regexp-in-string ".*/[0-9]*-?" "🢔 " buffer-file-name)
-         "%b"))
-      (:eval
-       (let ((project-name (projectile-project-name)))
-         (unless (string= "-" project-name)
-           (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name)))))
-    )
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -84,8 +73,9 @@
 ;;; :lang org
 (setq org-directory "~/org/"
       ;;org-agenda-files (directory-files-recursively org-directory "\.org$")
-      org-archive-location (concat org-directory ".archive/%s::")
-      org-roam-directory (concat org-directory "notes/")
+      ;;org-archive-location (concat org-directory ".archive/%s::")
+      org-roam-dailies-directory (concat org-directory "dailies")
+      org-roam-directory (concat org-directory "roam/")
       org-ellipsis " ▼ "
       org-superstar-headline-bullets-list '("☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷" "☷" "☷" "☷"))
 
