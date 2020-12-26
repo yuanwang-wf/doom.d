@@ -71,13 +71,30 @@
 ;;(add-hook 'java-mode-hook #'lsp)
 
 ;;; :lang org
+(defun +org/opened-buffer-files ()
+  "Return the list of files currently opened in Emacs."
+  (delq nil
+        (mapcar (lambda (x)
+                  (if (and (buffer-file-name x)
+                           (string-match "\\.org.gpg$"
+                                         (buffer-file-name x)))
+                      (buffer-file-name x)))
+                (buffer-list))))
+
 (setq org-directory "~/org/"
       ;;org-agenda-files (directory-files-recursively org-directory "\.org$")
       ;;org-archive-location (concat org-directory ".archive/%s::")
       org-roam-dailies-directory (concat org-directory "dailies")
+
+
       org-roam-directory (concat org-directory "roam/")
+      org-roam-encrypt-files t
       org-ellipsis " ▼ "
-      org-superstar-headline-bullets-list '("☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷" "☷" "☷" "☷"))
+      org-refile-targets '((+org/opened-buffer-files :maxlevel . 9))
+      org-superstar-headline-bullets-list '("☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷" "☷" "☷" "☷")
+
+
+      )
 
 (after! browse-at-remote
   (setq browse-at-remote-add-line-number-if-no-region-selected t))
@@ -85,7 +102,9 @@
 (after! org
   (setq org-agenda-dim-blocked-tasks nil)
   (setq org-agenda-inhibit-startup t)
-  (setq org-agenda-use-tag-inheritance nil))
+  (setq org-agenda-use-tag-inheritance nil)
+  (setq org-agenda-file-regexp "\\`[^.].*\\.org.gpg\\'"))
+(after! org (setq org-agenda-files (append (file-expand-wildcards "~/org/*.org.gpg") (file-expand-wildcards "~/org/*.org"))))
 (require 'ox-confluence)
 
 (after! plantuml-mode
@@ -109,3 +128,4 @@
               (message "Deleted file %s." filename)
               (kill-buffer)))
       (message "Not a file visiting buffer!"))))
+
