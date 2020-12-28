@@ -84,15 +84,22 @@
 (setq org-directory "~/org/"
       ;;org-agenda-files (directory-files-recursively org-directory "\.org$")
       ;;org-archive-location (concat org-directory ".archive/%s::")
-      org-roam-dailies-directory (concat org-directory "dailies")
-
-
+      deft-extensions '("org" "gpg")
+      deft-directory org-directory
       org-roam-directory (concat org-directory "roam/")
       org-roam-encrypt-files t
       org-ellipsis " ▼ "
       org-refile-targets '((+org/opened-buffer-files :maxlevel . 9))
       org-superstar-headline-bullets-list '("☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷" "☷" "☷" "☷")
-
+      org-agenda-file-regexp "\\`[^.].*\\.org.gpg\\'"
+      org-agenda-files (append (file-expand-wildcards (concat org-directory "*.org.gpg"))
+                               (file-expand-wildcards (concat org-directory "*.org"))
+                               (file-expand-wildcards (concat org-directory "projects/*.org"))
+                               (file-expand-wildcards (concat org-directory "projects/*.org.gpg"))
+                               (file-expand-wildcards (concat org-directory "Dropbox/project/*.org.gpg"))
+                               )
+      org-default-notes-file (concat org-directory "Dropbox/project/inbox.org")
+      +org-capture-todo-file (concat org-directory "Dropbox/project/inbox.org")
 
       )
 
@@ -102,9 +109,7 @@
 (after! org
   (setq org-agenda-dim-blocked-tasks nil)
   (setq org-agenda-inhibit-startup t)
-  (setq org-agenda-use-tag-inheritance nil)
-  (setq org-agenda-file-regexp "\\`[^.].*\\.org.gpg\\'"))
-(after! org (setq org-agenda-files (append (file-expand-wildcards "~/org/*.org.gpg") (file-expand-wildcards "~/org/*.org"))))
+  (setq org-agenda-use-tag-inheritance nil))
 (require 'ox-confluence)
 
 (after! plantuml-mode
