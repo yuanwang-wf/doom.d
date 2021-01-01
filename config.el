@@ -96,7 +96,7 @@
                                (file-expand-wildcards (concat org-directory "*.org"))
                                (file-expand-wildcards (concat org-directory "projects/*.org"))
                                (file-expand-wildcards (concat org-directory "projects/*.org.gpg"))
-                               (file-expand-wildcards (concat org-directory "Dropbox/project/*.org.gpg"))
+                               (file-expand-wildcards (concat org-directory "Dropbox/project/*.org"))
                                )
       org-default-notes-file (concat org-directory "Dropbox/project/inbox.org")
       +org-capture-todo-file (concat org-directory "Dropbox/project/inbox.org")
@@ -109,14 +109,18 @@
 (after! org
   (setq org-agenda-dim-blocked-tasks nil)
   (setq org-agenda-inhibit-startup t)
-  (setq org-agenda-use-tag-inheritance nil))
+  (setq org-agenda-use-tag-inheritance nil)
+  (setq org-modules
+   (quote
+    (org-habit org-bibtex ))))
 (require 'ox-confluence)
 
 (after! plantuml-mode
   (setq plantuml-jar-path (getenv "PLANTUML_JAR_PATH"))
   (setq org-plantuml-jar-path (getenv "PLANTUML_JAR_PATH"))
-)
+  )
 
+(require 'org-habit)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
