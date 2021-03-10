@@ -20,7 +20,7 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; Menlo, Monaco, 'Courier New', monospace
-(setq doom-font (font-spec :family "Essential PragmataPro" :size 20))
+(setq doom-font (font-spec :family "Essential PragmataPro" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -94,6 +94,8 @@
       org-agenda-file-regexp "\\`[^.].*\\.org.gpg\\'"
       org-agenda-files (append (file-expand-wildcards (concat org-directory "*.org.gpg"))
                                (file-expand-wildcards (concat org-directory "*.org"))
+                               (file-expand-wildcards (concat org-directory "inbox/*.org"))
+                               (file-expand-wildcards (concat org-directory "inbox/*.org.gpg"))
                                (file-expand-wildcards (concat org-directory "projects/*.org"))
                                (file-expand-wildcards (concat org-directory "projects/*.org.gpg"))
                                (file-expand-wildcards (concat org-directory "Dropbox/project/*.org"))
@@ -102,6 +104,12 @@
       +org-capture-todo-file (concat org-directory "Dropbox/project/inbox.org")
 
       )
+
+
+(with-eval-after-load "org-tree-slide"
+  (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
+  (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree)
+ )
 
 (after! browse-at-remote
   (setq browse-at-remote-add-line-number-if-no-region-selected t))
